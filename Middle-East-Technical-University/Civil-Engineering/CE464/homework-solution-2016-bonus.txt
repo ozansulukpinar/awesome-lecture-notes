@@ -1,0 +1,146 @@
+clear all
+close all
+clc
+
+[voidRatio,effectiveStress] = textread ('dosya.txt','%f%f')
+
+% store the first column for void ratio and the second column for effective stress 
+
+A_initial = [voidRatio,effectiveStress];
+
+logarithmic_effectiveStress = log10(A_initial(:,2));
+
+% logarithm of the effective stress
+
+A = [voidRatio,logarithmic_effectiveStress];
+[m,n] = size(A);
+
+% find the number of rows of data
+
+i = 1;
+
+C=[];
+
+while i<=m-2
+        l = m-i;
+        Cc_one =abs((A(l,1)-A(l+1,1))/(A(l,2)-A(l+1,2)));
+        Cc_two =abs((A(l-1,1)-A(l,1))/(A(l-1,2)-A(l,2)));
+        C(i,:) =[Cc_one, Cc_two];
+        B(i,:) =[((C(i,1)-C(i,2))/C(i,1))];
+                if C(i,1) ==0 || C(i,2) ==0
+                         C(i,:)=[];
+                end        
+        i = i+1;
+end
+
+[w,r] = max(B);
+
+
+o=1;
+f=0;
+g=1;
+i=1;
+
+D=[];
+while o<=r-1
+         if abs((C(i,1)-C(i,2)))<=0.01
+                D(g,:)= C(i,1);
+                Cc=mean(D);
+                g=g+1;
+                f=f+1;
+                i=i+1;
+         end
+        o=o+1;
+end
+
+if f>=1
+        compressionIndex = Cc
+else
+        compressionIndex = C(r-1,2)
+end
+
+
+p = polyfit(logarithmic_effectiveStress,voidRatio,4);
+
+plot(logarithmic_effectiveStress, voidRatio)
+%title ('Void ratio vs. Effective stress')
+%xlabel('Effective stress(kPa)')
+%ylabel('Void ratio')
+%hold on
+
+a = p(:,1);
+b = p(:,2);
+c = p(:,3);
+d = p(:,4);
+e = p(:,5);
+        
+% when we take the 4th derivative to find maximum curvature, we will obtain this
+equation: 24*a*x+6*b=0
+
+
+
+x_max_curvature = (-b)/(4*a);
+y_max_curvature = a*(x_max_curvature)^4 + b*(x_max_curvature)^3
++c*(x_max_curvature)^2 + d*(x_max_curvature)^1 + e;
+
+
+
+
+straight_line = 0:0.01:1000;
+%plot (straight_line,y_max_curvature)
+hold on
+
+
+slope_of_equation = 4*a*(x_max_curvature)^3 + 3*b*(x_max_curvature)^2
++2*c*(x_max_curvature) + d;
+constant_of_slopeEquation =  y_max_curvature - (slope_of_equation)*(x_max_curvature);
+
+% we try to obtain slope equation in the form of y=mx+b
+
+x_equation=x_max_curvature;
+y_equation = (slope_of_equation)* x_equation + constant_of_slopeEquation;
+%plot (x_equation,y_equation)
+hold on
+
+degree_between_firstTwoline =  atan(slope_of_equation);
+half_of_degree = (degree_between_firstTwoline)/2;
+slope_of_midline = tan(half_of_degree);
+m_midline = slope_of_midline;
+b_midline = y_max_curvature - (m_midline)*x_max_curvature;
+y_midline = m_midline*(x_max_curvature) + b_midline;
+%plot ( x_max_curvature,y_midline)
+hold on
+
+x=A(m,2)-0.3;
+y= a*x^4 + b*x^3 + c*x^2 + d*x + e;
+m_virgin_compression_line = (A(m,2) - x) / (A(m,1) - y);
+
+i = 1;
+
+while i<=m-2 
+
+        if abs((C(i,1)-C(i,2)))<=0.01
+                b_virgin_compression_line = A((m-i),1) - m_virgin_compression_line*
+A((m-i),2);
+                break
+        else
+                b_virgin_compression_line = A(m-r,1) - m_virgin_compression_line*
+A(m-r,2);
+        end
+i = i+1;
+
+end
+
+x_virgin_compression_line = C(2,2);
+y_virgin_compression_line = (m_virgin_compression_line)*x_virgin_compression_line
++b_virgin_compression_line;
+
+% for the intersection point, y_midline should equal to y_virgin_compression_line
+and also x_midline equal to x_virgin_compression_line: y1=y2=mx+b
+
+%plot ( x_virgin_compression_line,y_virgin_compression_line)
+hold off
+
+pp = (b_virgin_compression_line - b_midline)/(m_midline- m_virgin_compression_line);
+
+preconsolidationPressure=10^abs(pp)
