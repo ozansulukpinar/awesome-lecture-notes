@@ -12,7 +12,7 @@ Lecture notes that are belonging different departments of different universities
 
 ## General info
 
-Sharing is the one of the best things in the world. After involving the informatics world, you can see its power. So, I have decided to share all lecture notes which I collected or prepared from my collegaue years to now. I hope this will be helpful for at least someone.
+Sharing is the one of the best things in the world. After involving the informatics world, you can see its power. So, I have decided to share all lecture notes which I collected or prepared from my college years to now. I hope this will be helpful for at least someone.
 
 ## Contents
 
