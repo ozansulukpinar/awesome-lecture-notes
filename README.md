@@ -16,12 +16,12 @@ Sharing is the one of the best things in the world. After involving the informat
 
 ## Contents
 
-- [Bilkent University](#bilkent-university)
-  - [Electrics and Electronics Engineering](#electrics-and-electronics-engineering)
-- [Middle East Technical University](#middle-east-technical-university)
-  - [Aerospace Engineering](#aerospace-engineering)
-  - [Civil Engineering](#civil-engineering)
-  - [Mechanical Engineering](#mechanical-engineering)
+- [Bilkent University](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Bilkent-University)
+  - [Electrics and Electronics Engineering](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Bilkent-University/Electrical-and-Electronics-Engineering)
+- [Middle East Technical University](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Middle-East-Technical-University)
+  - [Aerospace Engineering](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Middle-East-Technical-University/Aerospace-Engineering)
+  - [Civil Engineering](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Middle-East-Technical-University/Civil-Engineering)
+  - [Mechanical Engineering](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Middle-East-Technical-University/Mechanical-Engineering)
 
 ## Contribute
 
