@@ -18,6 +18,8 @@ Sharing is the one of the best things in the world. After involving the informat
 
 - [Bilkent University](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Bilkent-University)
   - [Electrics and Electronics Engineering](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Bilkent-University/Electrical-and-Electronics-Engineering)
+- [Marmara University](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Marmara-University)
+  - [Business Administration](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Marmara-University/Business-Administration)
 - [Middle East Technical University](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Middle-East-Technical-University)
   - [Aerospace Engineering](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Middle-East-Technical-University/Aerospace-Engineering)
   - [Civil Engineering](https://github.com/ozansulukpinar/awesome-lecture-notes/tree/main/Middle-East-Technical-University/Civil-Engineering)
